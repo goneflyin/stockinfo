@@ -38,4 +38,8 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
 end
 
+# using latest bootstrap-sass as of 03072015
 gem 'bootstrap-sass', '~> 3.1.1'
+
+# using latest ember-cli-rails as of 03072015
+gem 'ember-cli-rails', '~> 0.1.10'
