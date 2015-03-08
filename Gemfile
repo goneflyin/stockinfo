@@ -36,6 +36,10 @@ group :development, :test do
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
+
+  # Use 'pry' for console
+  gem 'pry-rails'
+  gem 'pry-doc'
 end
 
 # using latest bootstrap-sass as of 03072015
@@ -43,3 +47,5 @@ gem 'bootstrap-sass', '~> 3.1.1'
 
 # using latest ember-cli-rails as of 03072015
 gem 'ember-cli-rails', '~> 0.1.10'
+
+gem 'yahoo-finance', require: 'yahoo_finance'
