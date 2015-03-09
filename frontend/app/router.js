@@ -6,6 +6,8 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.resource('stocks', function() {});
+  this.resource('stock', { path: '/stocks/:symbol' });
 });
 
 export default Router;
