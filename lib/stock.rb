@@ -3,14 +3,32 @@ require 'json'
 class Stock
   attr_reader :symbol, :name, :market_cap, :ipo_year, :sector, :industry
 
+
   class << self
     def add(data)
+      @stocks ||= []
       @by_symbol ||= {}
-      @by_symbol[data[:symbol]] = Stock.new(data)
+      stock = Stock.new(data)
+      @by_symbol[data[:symbol]] = stock
+      @stocks << stock
     end
 
     def find(symbol)
       @by_symbol[symbol]
+    end
+
+    def search(symbol, limit = 10)
+      results = []
+
+      @stocks.each do |stock|
+        if stock.name.starts_with? symbol
+          results << stock
+        end
+
+        return results if results.length >= limit
+      end
+
+      results
     end
   end
 
