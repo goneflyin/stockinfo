@@ -1,9 +1,22 @@
 module Api
   class StocksController < APIController
-    PAST_30_DAYS = { 
-      start_date: Time::now-(24*60*60*30), 
-      end_date: Time::now 
+    PAST_30_DAYS = {
+      start_date: Time::now-(24*60*60*30),
+      end_date: Time::now
     }
+
+    MAX_QUERY_RESULTS = 10
+
+    def index
+      query = params[:q]
+
+      @stocks =
+        if query.present?
+          Stock.search query, MAX_QUERY_RESULTS
+        else
+          []
+        end
+    end
 
     def show
       @stock = Stock.find(params[:id])
@@ -20,7 +33,7 @@ module Api
         high  = quote.high.to_f
         low   = quote.low.to_f
 
-        { 
+        {
           id: id,
           avg: (open + close + high + low) / 4,
           open: open,
