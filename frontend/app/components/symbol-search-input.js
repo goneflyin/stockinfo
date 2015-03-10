@@ -5,7 +5,7 @@ export default Ember.TextField.extend({
   value: '',
 
   valueChangeDone: function() {
-    this.sendAction('symbolAction', this.value);
+    this.sendAction('searchAction', this.value);
   },
 
   valueObserver: Ember.immediateObserver('value', function() {

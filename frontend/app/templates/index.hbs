@@ -1,11 +1,15 @@
 <div class='jumbotron'>
   <h1>Hello from Ember.js!</h1>
-  <p>Let's see some stocks!</p>
-  {{symbol-search-input symbolAction="searchSymbolChanged"}}
+  <p>Let's search some stocks!</p>
+  {{symbol-search-input searchAction="doSearch" value=searchSymbol}}
 
+  {{#if searchSymbol}}
   <ul>
     {{#each stock in model}}
-      <li>{{stock.symbol}} - {{stock.name}}</li>
+      <li>{{#link-to 'stock' stock}}{{stock.symbol}} - {{stock.name}}{{/link-to}}</li>
+    {{else}}
+      <li>No stocks found</li>
     {{/each}}
   </ul>
+  {{/if}}
 </div>

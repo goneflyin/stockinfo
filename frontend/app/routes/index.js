@@ -9,7 +9,7 @@ export default Ember.Route.extend({
   },
 
   actions: {
-    searchSymbolChanged: function(symbol) {
+    doSearch: function(symbol) {
       this.set('searchSymbol', symbol);
       this.refresh();
     }
